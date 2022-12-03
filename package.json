@@ -1,7 +1,7 @@
 {
-  "name": "react-native-svg-animations",
+  "name": "react-native-svg-path-animations",
   "version": "0.2.7",
-  "description": "SVG Animations wrapper for react-native.",
+  "description": "This is a fork of the package react-native-svg-animations",
   "main": "index.js",
   "directories": {
     "example": "examples"
@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/73R3WY/react-native-svg-animations/issues"
   },
-  "homepage": "https://github.com/73R3WY/react-native-svg-animations",
+  "homepage": "https://github.com/MDSOPAN/react-native-svg-path-animations",
   "dependencies": {
     "color": "^3.1.2",
     "svg-path-properties": "^1.0.3"
