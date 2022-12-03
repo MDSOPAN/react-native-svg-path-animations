@@ -1,6 +1,6 @@
 {
   "name": "react-native-svg-path-animations",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "This is a fork of the package react-native-svg-animations",
   "main": "index.js",
   "directories": {

@@ -61,6 +61,7 @@ class AnimatedSVGPath extends Component {
       easing = Easing["linear"],
       reverse,
       rewind,
+      animationend,
     } = this.props;
     this.strokeDashoffset.setValue(!reverse ? this.length : 0);
     const animationsSequence = [].concat(
