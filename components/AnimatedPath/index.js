@@ -22,6 +22,7 @@ class AnimatedSvgPaths extends Component {
     transform: PropTypes.string,
     reverse: PropTypes.bool,
     rewind: PropTypes.bool,
+    animationend: PropTypes.func,
   };
 
   static defaultProps = {
@@ -39,6 +40,7 @@ class AnimatedSvgPaths extends Component {
     transform: "",
     reverse: false,
     rewind: false,
+    animationend: null,
   };
 
   constructor(props) {
@@ -50,14 +52,8 @@ class AnimatedSvgPaths extends Component {
   }
 
   animate = () => {
-    const {
-      delay,
-      duration,
-      loop,
-      easing,
-      reverse,
-      rewind,
-    } = this.props;
+    const { delay, duration, loop, easing, reverse, rewind, animationend } =
+      this.props;
     this.strokeDashoffset.setValue(!reverse ? this.length : 0);
     const animationsSequence = [].concat(
       [
@@ -71,19 +67,22 @@ class AnimatedSvgPaths extends Component {
       ],
       rewind
         ? [
-          Animated.timing(this.strokeDashoffset, {
-            toValue: !reverse ? this.length : 0,
-            duration: duration,
-            useNativeDriver: true,
-            easing: easing,
-          }),
-        ]
+            Animated.timing(this.strokeDashoffset, {
+              toValue: !reverse ? this.length : 0,
+              duration: duration,
+              useNativeDriver: true,
+              easing: easing,
+            }),
+          ]
         : []
     );
 
     Animated.sequence(animationsSequence).start(() => {
       if (loop) {
         this.animate();
+      }
+      if (animationend != null) {
+        animationend();
       }
     });
   };
